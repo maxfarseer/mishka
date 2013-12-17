@@ -207,7 +207,7 @@
 
         bearsData = [{"articul":"00001","name":"Мишка-братишка","img":"cat.jpg","price":"1000"},{"articul":"00002","name":"Мишка-топтыжка","img":"cat.jpg","price":"1010"},{"articul":"00003","name":"Мишка-юрист","img":"cat.jpg","price":"2000"},{"articul":"00004","name":"Мишка-малой","img":"cat.jpg","price":"999"},{"articul":"00005","name":"Мишка-большой-братишка","img":"cat.jpg","price":"1000"},{"articul":"00006","name":"Мишка длинное название","img":"cat.jpg","price":"1010"},{"articul":"00007","name":"Мишка-эффективный","img":"cat.jpg","price":"1029"},{"articul":"00008","name":"Мишка-лень","img":"cat.jpg","price":"1001"}];
 
-    var minionData = [];
+    var minionData = [{"articul":"10001","name":"Миньон-братишка","img":"dog.jpg","price":"1000"},{"articul":"10002","name":"Миньон-топтыжка","img":"dog.jpg","price":"1010"},{"articul":"10003","name":"Миньон-юрист","img":"dog.jpg","price":"2000"},{"articul":"10004","name":"Миньон-малой","img":"dog.jpg","price":"999"},{"articul":"10005","name":"Миньон-большой-братишка","img":"dog.jpg","price":"1000"},{"articul":"10006","name":"Миньон длинное название","img":"dog.jpg","price":"1010"},{"articul":"10007","name":"Миньон-эффективный","img":"dog.jpg","price":"1029"},{"articul":"10008","name":"Миньон-лень","img":"dog.jpg","price":"1001"}];
 
     $('.js-tab').on('click',function (e) {
         var currentData = $(this).attr('href').slice(1);
@@ -222,12 +222,53 @@
         $(this).tab('show')
     });
 
-    $('.toys').on('click', '.js-readmore, .js-order', function() {
+    /*$('.toys').on('click', '.js-readmore, .js-order', function() {
         $('#order-modal').modal('toggle');
+    });*/
+
+    var vent = {};
+    _.extend(vent, Backbone.Events);
+
+    var ToyModel = Backbone.Model.extend({
+        defaults: {
+            price: 1000,
+            material: 'шерсть'
+        },
+        initialize: function() {
+            this.on('change',this.render);
+        },
+        render: function() {
+            console.log(this.attributes);
+            $('#order-modal').modal('toggle');
+            console.log('render');
+        }
     });
 
+    var ToyView = Backbone.View.extend({
+        'el':'.toys',
+        'events': {
+            'click .js-readmore': 'openModal'
+        },
 
+        openModal: function(e) {
+            var $parent = $(e.currentTarget).closest('.toy'),
+                code = $('.toy-info__code',$parent).text(),
+                name = $('.toy-info__name',$parent).text(),
+                img = $('.toy__image',$parent).attr('src'),
+                price = $('.toy__price b',$parent).text();
 
+            this.model.set({
+                code: code,
+                name: name,
+                img: img,
+                price: price
+            });
+        }
+    });
+
+    var toyView = new ToyView({
+        model: new ToyModel()
+    });
 
 </script>
 
