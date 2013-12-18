@@ -160,12 +160,22 @@
                 <h4 class="modal-title" id="myModalLabel">Подробнее о товаре</h4>
             </div>
             <div class="modal-body">
-                <img src="publick/i/dog.jpg" alt="toy" class="modal-body__img">
-                <div class="modal-body__info">
-                        Игрушка выполнена из отличного материала и набита любящими руками. У одного из работников есть жена. Сделано с любовью!
+                <div class="modal-body__left">
+                    <img src="publick/i/dog.jpg" alt="toy" class="modal-body__img">
+                </div>
+                <div class="modal-body__right">
+                    <div class="info">
+                            <div class="info__articul">Артикул: <span class="js-info-articul"></span></div>
+                            <div class="info__articul">Название: <span class="js-info-name"></span></div>
+                            <div class="info__articul">Материал: <span class="js-info-material"></span></div>
+                            <div class="info__description js-info-description"></div>
+                            <div class="info__price">Цена: <span class="js-info-price"></span> руб.</div>
+                            <input type="text" class="form-control" placeholder="Введите ваш номер">
+                            <div class="btn btn-warning js-send-order">Заказать</div>
+                        </div>
+                        <p> тут форма телефона и кнопка заказать </p>
                     </div>
-                    <p> тут форма телефона и кнопка заказать </p>
-            </div>
+                </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
             </div>
@@ -173,11 +183,11 @@
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
-<script type="text-template" id="toys-template">
+<script type="text/template" id="toys-template">
     <% _.each(data, function(toy) { %>
         <div class="toy col-md-4 col-sm-6">
             <div class="toy-info">
-                <div class="toy-info__code">Артикул: <%- toy.articul %></div>
+                <div class="toy-info__code">Артикул: <span class="js-toy-code"><%- toy.articul %></span></div>
                 <div class="toy-info__name"><%- toy.name %></div>
             </div>
             <div class="toy-img-wrapper">
@@ -186,10 +196,14 @@
                     <div class="toy-more__text js-readmore btn btn-danger btn-xs" data-target="#order-modal">подробнее</div>
                 </div>
             </div>
-            <div class="toy__price">Цена: <b><%- toy.price %> руб.</b></div>
+            <div class="toy__price">Цена: <b><span class="js-toy-price"><%- toy.price %></span> руб.</b></div>
             <div class="btn btn-sm btn-warning js-order">Заказать</div>
         </div>
     <% }) %>
+</script>
+
+<script type="text/template" id="popup-template">
+
 </script>
 
 
@@ -235,12 +249,11 @@
             material: 'шерсть'
         },
         initialize: function() {
-            this.on('change',this.render);
+            //vent.on('modal:open',this.render,this);
         },
         render: function() {
             console.log(this.attributes);
             $('#order-modal').modal('toggle');
-            console.log('render');
         }
     });
 
@@ -252,10 +265,10 @@
 
         openModal: function(e) {
             var $parent = $(e.currentTarget).closest('.toy'),
-                code = $('.toy-info__code',$parent).text(),
+                code = $('.js-toy-code',$parent).text(),
                 name = $('.toy-info__name',$parent).text(),
                 img = $('.toy__image',$parent).attr('src'),
-                price = $('.toy__price b',$parent).text();
+                price = $('.js-toy-price',$parent).text();
 
             this.model.set({
                 code: code,
@@ -263,6 +276,7 @@
                 img: img,
                 price: price
             });
+            vent.trigger('modal:open');
         }
     });
 
