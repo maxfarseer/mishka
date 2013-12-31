@@ -45,90 +45,7 @@
 
                 <div class="tab-pane fade in active" id="minion">
                     <div class="toys js-minion">
-                        <div class="toy col-md-4 col-sm-6">
-                            <div class="toy-info">
-                                <div class="toy-info__code">Артикул: 00000</div>
-                                <div class="toy-info__name">Мишка-братишка</div>
-                            </div>
-                            <div class="toy-img-wrapper">
-                                <img src="publick/i/dog.jpg" class="toy__image img-thumbnail" alt="cat"/>
-                                <div class="col-md-4 col-sm-6 toy-more">
-                                    <div class="toy-more__text js-readmore btn btn-danger btn-xs" data-target="#order-modal">подробнее</div>
-                                </div>
-                            </div>
-                            <div class="toy__price">Цена: <b>1000р</b></div>
-                            <div class="btn btn-sm btn-warning js-order">Заказать</div>
-                        </div>
-                        <div class="toy col-md-4 col-sm-6">
-                            <div class="toy-info">
-                                <div class="toy-info__code">Артикул: 00000</div>
-                                <div class="toy-info__name">Мишка-братишка</div>
-                            </div>
-                            <div class="toy-img-wrapper">
-                                <img src="publick/i/dog.jpg" class="toy__image img-thumbnail" alt="cat"/>
-                                <div class="col-md-4 col-sm-6 toy-more">
-                                    <div class="toy-more__text js-readmore btn btn-danger btn-xs" data-target="#order-modal">подробнее</div>
-                                </div>
-                            </div>
-                            <div class="toy__price">Цена: <b>1000р</b></div>
-                            <div class="btn btn-sm btn-warning js-order">Заказать</div>
-                        </div>
-                        <div class="toy col-md-4 col-sm-6">
-                            <div class="toy-info">
-                                <div class="toy-info__code">Артикул: 00000</div>
-                                <div class="toy-info__name">Мишка-братишка</div>
-                            </div>
-                            <div class="toy-img-wrapper">
-                                <img src="publick/i/dog.jpg" class="toy__image img-thumbnail" alt="cat"/>
-                                <div class="col-md-4 col-sm-6 toy-more">
-                                    <div class="toy-more__text js-readmore btn btn-danger btn-xs" data-target="#order-modal">подробнее</div>
-                                </div>
-                            </div>
-                            <div class="toy__price">Цена: <b>1000р</b></div>
-                            <div class="btn btn-sm btn-warning js-order">Заказать</div>
-                        </div>
-                        <div class="toy col-md-4 col-sm-6">
-                            <div class="toy-info">
-                                <div class="toy-info__code">Артикул: 00000</div>
-                                <div class="toy-info__name">Мишка-братишка</div>
-                            </div>
-                            <div class="toy-img-wrapper">
-                                <img src="publick/i/dog.jpg" class="toy__image img-thumbnail" alt="cat"/>
-                                <div class="col-md-4 col-sm-6 toy-more">
-                                    <div class="toy-more__text js-readmore btn btn-danger btn-xs" data-target="#order-modal">подробнее</div>
-                                </div>
-                            </div>
-                            <div class="toy__price">Цена: <b>1000р</b></div>
-                            <div class="btn btn-sm btn-warning js-order">Заказать</div>
-                        </div>
-                        <div class="toy col-md-4 col-sm-6">
-                            <div class="toy-info">
-                                <div class="toy-info__code">Артикул: 00000</div>
-                                <div class="toy-info__name">Мишка-братишка</div>
-                            </div>
-                            <div class="toy-img-wrapper">
-                                <img src="publick/i/dog.jpg" class="toy__image img-thumbnail" alt="cat"/>
-                                <div class="col-md-4 col-sm-6 toy-more">
-                                    <div class="toy-more__text js-readmore btn btn-danger btn-xs" data-target="#order-modal">подробнее</div>
-                                </div>
-                            </div>
-                            <div class="toy__price">Цена: <b>1000р</b></div>
-                            <div class="btn btn-sm btn-warning js-order">Заказать</div>
-                        </div>
-                        <div class="toy col-md-4 col-sm-6">
-                            <div class="toy-info">
-                                <div class="toy-info__code">Артикул: 00000</div>
-                                <div class="toy-info__name">Мишка-братишка</div>
-                            </div>
-                            <div class="toy-img-wrapper">
-                                <img src="publick/i/dog.jpg" class="toy__image img-thumbnail" alt="cat"/>
-                                <div class="col-md-4 col-sm-6 toy-more">
-                                    <div class="toy-more__text js-readmore btn btn-danger btn-xs" data-target="#order-modal">подробнее</div>
-                                </div>
-                            </div>
-                            <div class="toy__price">Цена: <b>1000р</b></div>
-                            <div class="btn btn-sm btn-warning js-order">Заказать</div>
-                        </div>
+
                     </div>
                 </div><!-- end tab item -->
 
@@ -152,7 +69,7 @@
 </div> <!-- container -->
 
 <!-- Modal -->
-<div class="modal fade" id="order-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade js-popup" id="order-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -161,20 +78,17 @@
             </div>
             <div class="modal-body">
                 <div class="modal-body__left">
-                    <img src="publick/i/dog.jpg" alt="toy" class="modal-body__img">
+                    <img src="publick/i/dog.jpg" alt="toy" class="modal-body__img"> <!-- добавить картинку в toy template и пересмотреть верстку этого дела, так как тимплейт бьется -->
                 </div>
                 <div class="modal-body__right">
                     <div class="info">
-                            <div class="info__articul">Артикул: <span class="js-info-articul"></span></div>
-                            <div class="info__articul">Название: <span class="js-info-name"></span></div>
-                            <div class="info__articul">Материал: <span class="js-info-material"></span></div>
-                            <div class="info__description js-info-description"></div>
-                            <div class="info__price">Цена: <span class="js-info-price"></span> руб.</div>
-                            <input type="text" class="form-control" placeholder="Введите ваш номер">
-                            <div class="btn btn-warning js-send-order">Заказать</div>
+                        <div class="js-toy-wrapper">
+                            <!-- toy-template -->
                         </div>
-                        <p> тут форма телефона и кнопка заказать </p>
+                        <input type="text" class="form-control" placeholder="Введите ваш номер">
+                        <div class="btn btn-warning js-send-order">Заказать</div>
                     </div>
+                    <p> тут форма телефона и кнопка заказать </p>
                 </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
@@ -182,6 +96,14 @@
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+
+<script type="text/template" id="toy-template">
+    <div class="info__item">Артикул: <span class="js-info-articul"><%- toy.code %></span></div>
+    <div class="info__item">Название: <span class="js-info-name"><%- toy.name %></span></div>
+    <div class="info__item">Материал: <span class="js-info-material"><%- toy.material %></span></div>
+    <div class="info__description js-info-description"></div>
+    <div class="info__price">Цена: <span class="js-info-price"><%- toy.price %></span> руб.</div>
+</script>
 
 <script type="text/template" id="toys-template">
     <% _.each(data, function(toy) { %>
@@ -217,19 +139,37 @@
 <script>
 
     var toysTemplate = _.template( $('#toys-template').html() ),
+        toyTemplate = _.template( $('#toy-template').html() ),
+        vent = {},
         data = [],
+        toy = {},
 
-        bearsData = [{"articul":"00001","name":"Мишка-братишка","img":"cat.jpg","price":"1000"},{"articul":"00002","name":"Мишка-топтыжка","img":"cat.jpg","price":"1010"},{"articul":"00003","name":"Мишка-юрист","img":"cat.jpg","price":"2000"},{"articul":"00004","name":"Мишка-малой","img":"cat.jpg","price":"999"},{"articul":"00005","name":"Мишка-большой-братишка","img":"cat.jpg","price":"1000"},{"articul":"00006","name":"Мишка длинное название","img":"cat.jpg","price":"1010"},{"articul":"00007","name":"Мишка-эффективный","img":"cat.jpg","price":"1029"},{"articul":"00008","name":"Мишка-лень","img":"cat.jpg","price":"1001"}];
+        bearsData = [{"articul":"00001","name":"Мишка-братишка","img":"cat.jpg","price":"1000"},{"articul":"00002","name":"Мишка-топтыжка","img":"cat.jpg","price":"1010"},{"articul":"00003","name":"Мишка-юрист","img":"cat.jpg","price":"2000"},{"articul":"00004","name":"Мишка-малой","img":"cat.jpg","price":"999"},{"articul":"00005","name":"Мишка-большой-братишка","img":"cat.jpg","price":"1000"},{"articul":"00006","name":"Мишка длинное название","img":"cat.jpg","price":"1010"},{"articul":"00007","name":"Мишка-эффективный","img":"cat.jpg","price":"1029"},{"articul":"00008","name":"Мишка-лень","img":"cat.jpg","price":"1001"}],
 
-    var minionData = [{"articul":"10001","name":"Миньон-братишка","img":"dog.jpg","price":"1000"},{"articul":"10002","name":"Миньон-топтыжка","img":"dog.jpg","price":"1010"},{"articul":"10003","name":"Миньон-юрист","img":"dog.jpg","price":"2000"},{"articul":"10004","name":"Миньон-малой","img":"dog.jpg","price":"999"},{"articul":"10005","name":"Миньон-большой-братишка","img":"dog.jpg","price":"1000"},{"articul":"10006","name":"Миньон длинное название","img":"dog.jpg","price":"1010"},{"articul":"10007","name":"Миньон-эффективный","img":"dog.jpg","price":"1029"},{"articul":"10008","name":"Миньон-лень","img":"dog.jpg","price":"1001"}];
+        minionData = [{"articul":"10001","name":"Миньон-братишка","img":"dog.jpg","price":"1000"},{"articul":"10002","name":"Миньон-топтыжка","img":"dog.jpg","price":"1010"},{"articul":"10003","name":"Миньон-юрист","img":"dog.jpg","price":"2000"},{"articul":"10004","name":"Миньон-малой","img":"dog.jpg","price":"999"},{"articul":"10005","name":"Миньон-большой-братишка","img":"dog.jpg","price":"1000"},{"articul":"10006","name":"Миньон длинное название","img":"dog.jpg","price":"1010"},{"articul":"10007","name":"Миньон-эффективный","img":"dog.jpg","price":"1029"},{"articul":"10008","name":"Миньон-лень","img":"dog.jpg","price":"1001"}];
+
+    _.extend(vent, Backbone.Events);
+
+    vent.on('modal:open', function(model) {
+        var modalView = new ModalView({
+            model: model
+        });
+        modalView.render();
+        $('#order-modal').modal('toggle');
+    });
 
     $('.js-tab').on('click',function (e) {
         var currentData = $(this).attr('href').slice(1);
-        if (currentData = 'bear') {
-            data = bearsData;
-            $('.js-bears').html( toysTemplate(bearsData) );
-        };
-
+        switch (currentData) {
+            case 'bear':
+                data = bearsData;
+                $('.toys').html( toysTemplate(bearsData) );
+            break;
+            case 'minion':
+                data = minionData;
+                $('.toys').html( toysTemplate(minionData) );
+            break;
+        }
         e.preventDefault();
         $('.js-tab').removeClass('btn-border-black');
         $(e.currentTarget).addClass('btn-border-black');
@@ -237,11 +177,8 @@
     });
 
     /*$('.toys').on('click', '.js-readmore, .js-order', function() {
-        $('#order-modal').modal('toggle');
+        vent.trigger('modal:open');
     });*/
-
-    var vent = {};
-    _.extend(vent, Backbone.Events);
 
     var ToyModel = Backbone.Model.extend({
         defaults: {
@@ -276,13 +213,32 @@
                 img: img,
                 price: price
             });
-            vent.trigger('modal:open');
+
+            vent.trigger('modal:open', this.model);
+        }
+    });
+
+    var ModalView = Backbone.View.extend({
+        'el':'.js-popup',
+        initialize: function() {
+            console.log('modal view open');
+            toy = {
+                code: this.model.get('code'),
+                name: this.model.get('name'),
+                img: this.model.get('img'),
+                price: this.model.get('price'),
+                material: this.model.get('material')
+            }
+        },
+        render: function() {
+            this.$el.find('.js-toy-wrapper').html( toyTemplate(toy) );
         }
     });
 
     var toyView = new ToyView({
         model: new ToyModel()
     });
+
 
 </script>
 
