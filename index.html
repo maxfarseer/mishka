@@ -26,8 +26,8 @@
         <div class="col-md-12">
             <!-- Nav tabs -->
             <div id="toy-types" class="nav nav-tabs">
-                <a href="#bear" data-toggle="tab" class="btn btn-sm btn-border-gray col-md-3 col-xs-6 js-tab">Мишки</a>
-                <a href="#minion" data-toggle="tab" class="btn btn-sm btn-border-gray btn-border-black col-md-3 col-xs-6 js-tab">Миньоны</a>
+                <a href="#bear" data-toggle="tab" class="btn btn-sm btn-border-gray btn-border-black col-md-3 col-xs-6 js-tab">Мишки</a>
+                <a href="#minion" data-toggle="tab" class="btn btn-sm btn-border-gray col-md-3 col-xs-6 js-tab">Миньоны</a>
                 <a href="#wood" data-toggle="tab" class="btn btn-sm btn-border-gray col-md-3 col-xs-6 js-tab">Бревна</a>
                 <a href="#others" data-toggle="tab" class="btn btn-sm btn-border-gray col-md-3 col-xs-6 js-tab">Другие</a>
             </div>
@@ -81,7 +81,7 @@
                 <h4 class="modal-title" id="myModalLabel">Ваш заказ принят</h4>
             </div>
             <div class="modal-body">
-                Ваш заказ принят
+                Ваш заказ принят, мы вам перезвоним на указанный номер: <%- order.phone %>
             </div>
 
             <div class="modal-footer">
@@ -108,11 +108,12 @@
                             <div class="info__item">Артикул: <span class="js-info-articul"><%- toy.code %></span></div>
                             <div class="info__item">Название: <span class="js-info-name"><%- toy.name %></span></div>
                             <div class="info__item">Материал: <span class="js-info-material"><%- toy.material %></span></div>
-                            //description закардкожено для демки
+                            <!-- description закардкожено для демки -->
                             <div class="info__description js-info-description">Описание для данного товара отсутствует</div>
                             <div class="info__price">Цена: <span class="js-info-price"><%- toy.price %></span> руб.</div>
                         </div>
                         <input type="text" class="form-control phone js-phone" placeholder="Введите ваш номер">
+                        <div class="info__item info__item_error">Ошибка: <span class="js-error-phone">Номер телефона введен некорректно</span></div>
                         <div class="btn btn-warning js-send-order">Заказать</div>
                     </div>
                 </div>
@@ -163,6 +164,7 @@
         vent = {},
         data = [],
         toy = {},
+        order = {},
 
         bearsData = [{"articul":"00001","name":"Мишка-братишка","img":"cat.jpg","price":"1000"},{"articul":"00002","name":"Мишка-топтыжка","img":"cat.jpg","price":"1010"},{"articul":"00003","name":"Мишка-юрист","img":"cat.jpg","price":"2000"},{"articul":"00004","name":"Мишка-малой","img":"cat.jpg","price":"999"},{"articul":"00005","name":"Мишка-большой-братишка","img":"cat.jpg","price":"1000"},{"articul":"00006","name":"Мишка длинное название","img":"cat.jpg","price":"1010"},{"articul":"00007","name":"Мишка-эффективный","img":"cat.jpg","price":"1029"},{"articul":"00008","name":"Мишка-лень","img":"cat.jpg","price":"1001"}],
 
@@ -177,6 +179,10 @@
         modalView.render();
         $('#order-modal').modal('toggle');
     });
+
+    // загружаем картинки при заходе в первый таб
+    data = bearsData;
+    $('.toys').html( toysTemplate(bearsData) );
 
     $('.js-tab').on('click',function (e) {
         var currentData = $(this).attr('href').slice(1);
@@ -251,9 +257,19 @@
         },
         render: function() {
             this.$el.html( toyTemplate(toy) );
+            this.$phone = this.$el.find(".js-phone");
+            this.$phone.mask("+7 (999) 999-99-99");
+            console.log(order.phone);
         },
         submit: function() {
-            this.$el.html( submitTemplate );
+            order.phone = this.$phone.val();
+            if (order.phone.length) {
+                this.$el.find('.info__item_error').fadeOut(200);
+                this.$el.html( submitTemplate(order) );
+                order.phone = '';
+            } else {
+                this.$el.find('.info__item_error').fadeIn(200);
+            }
         }
     });
 

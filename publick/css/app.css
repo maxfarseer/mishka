@@ -103,3 +103,6 @@ footer {
 .phone {
     margin: 20px 0;
 }
+.info__item_error {
+    display: none;
+}

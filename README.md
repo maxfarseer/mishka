@@ -11,6 +11,6 @@ Plugins
 
 TODO
 ======
-- validate phone + success page
+- validate phone + success page (bug order phone)
 - роутер/хистори
 - ...
