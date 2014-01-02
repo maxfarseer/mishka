@@ -4,7 +4,7 @@
     <title>Мишкин house</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="publick/vendor/bower_components/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="publick/css/app.less">
+    <link rel="stylesheet" href="publick/css/app.css">
 
 </head>
 <body>
@@ -15,7 +15,7 @@
             <div class="logo__top">мишкин</div>
             <div class="logo__btm">house</div>
         </div>
-        <div class="col-md-6 slogan">"Мишкин HOUSE" - мы не купили дизайн, зато у нас лучшая цена на мягие игрушки!</div>
+        <div class="col-md-6 slogan">"Мишкин HOUSE" - Bootstrap/Backbone.js demo app</div>
         <div class="col-md-3 contacts">
             <span class="glyphicon glyphicon-envelope"></span> admin@mishkin-house.ru<br/>
             <span class="glyphicon glyphicon-volume-up"></span> +7 123 456 78 90
@@ -50,11 +50,11 @@
                 </div><!-- end tab item -->
 
                 <div class="tab-pane fade" id="wood">
-                    Текст3
+                    Товары будут добавлены позже
                 </div><!-- end tab item -->
 
                 <div class="tab-pane fade" id="others">
-                    Текст4
+                    Товары будут добавлены позже
                 </div><!-- end tab item -->
 
             </div>
@@ -70,6 +70,28 @@
 
 <!-- Modal -->
 <div class="modal fade js-popup" id="order-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+</div><!-- /.modal -->
+
+<script type="text/template" id="submit-template">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Ваш заказ принят</h4>
+            </div>
+            <div class="modal-body">
+                Ваш заказ принят
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+            </div>
+        </div>
+    </div>
+</script>
+
+<script type="text/template" id="toy-template">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -78,31 +100,28 @@
             </div>
             <div class="modal-body">
                 <div class="modal-body__left">
-                    <img src="publick/i/dog.jpg" alt="toy" class="modal-body__img"> <!-- добавить картинку в toy template и пересмотреть верстку этого дела, так как тимплейт бьется -->
+                    <img src="<%- toy.img %>" alt="toy" class="modal-body__img">
                 </div>
                 <div class="modal-body__right">
                     <div class="info">
                         <div class="js-toy-wrapper">
-                            <!-- toy-template -->
+                            <div class="info__item">Артикул: <span class="js-info-articul"><%- toy.code %></span></div>
+                            <div class="info__item">Название: <span class="js-info-name"><%- toy.name %></span></div>
+                            <div class="info__item">Материал: <span class="js-info-material"><%- toy.material %></span></div>
+                            //description закардкожено для демки
+                            <div class="info__description js-info-description">Описание для данного товара отсутствует</div>
+                            <div class="info__price">Цена: <span class="js-info-price"><%- toy.price %></span> руб.</div>
                         </div>
-                        <input type="text" class="form-control" placeholder="Введите ваш номер">
+                        <input type="text" class="form-control phone js-phone" placeholder="Введите ваш номер">
                         <div class="btn btn-warning js-send-order">Заказать</div>
                     </div>
-                    <p> тут форма телефона и кнопка заказать </p>
                 </div>
+            </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
             </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-
-<script type="text/template" id="toy-template">
-    <div class="info__item">Артикул: <span class="js-info-articul"><%- toy.code %></span></div>
-    <div class="info__item">Название: <span class="js-info-name"><%- toy.name %></span></div>
-    <div class="info__item">Материал: <span class="js-info-material"><%- toy.material %></span></div>
-    <div class="info__description js-info-description"></div>
-    <div class="info__price">Цена: <span class="js-info-price"><%- toy.price %></span> руб.</div>
+        </div>
+    </div>
 </script>
 
 <script type="text/template" id="toys-template">
@@ -130,16 +149,17 @@
 
 
 <script src="publick/vendor/bower_components/jquery/jquery.min.js"></script>
-<script src="publick/vendor/js/less-1.3.3.min.js"></script>
 <script src="publick/vendor/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="publick/vendor/bower_components/underscore/underscore-min.js"></script>
 <script src="publick/vendor/bower_components/backbone/backbone-min.js"></script>
-
+<script src="publick/vendor/js/jquery.maskedinput.min.js"></script>
+<script src="publick/js/app.js"></script>
 
 <script>
 
     var toysTemplate = _.template( $('#toys-template').html() ),
         toyTemplate = _.template( $('#toy-template').html() ),
+        submitTemplate = _.template( $('#submit-template').html() ),
         vent = {},
         data = [],
         toy = {},
@@ -175,10 +195,6 @@
         $(e.currentTarget).addClass('btn-border-black');
         $(this).tab('show')
     });
-
-    /*$('.toys').on('click', '.js-readmore, .js-order', function() {
-        vent.trigger('modal:open');
-    });*/
 
     var ToyModel = Backbone.Model.extend({
         defaults: {
@@ -219,6 +235,9 @@
     });
 
     var ModalView = Backbone.View.extend({
+        'events': {
+            'click .js-send-order': 'submit'
+        },
         'el':'.js-popup',
         initialize: function() {
             console.log('modal view open');
@@ -231,14 +250,16 @@
             }
         },
         render: function() {
-            this.$el.find('.js-toy-wrapper').html( toyTemplate(toy) );
+            this.$el.html( toyTemplate(toy) );
+        },
+        submit: function() {
+            this.$el.html( submitTemplate );
         }
     });
 
     var toyView = new ToyView({
         model: new ToyModel()
     });
-
 
 </script>
 

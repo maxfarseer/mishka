@@ -5,8 +5,12 @@ mishka
 
 Технологии: Bootstrap, Backbone.js, Underscore templates, jQuery ;)
 
+Plugins
+======
+- Masked input - http://digitalbush.com/projects/masked-input-plugin/
+
 TODO
 ======
-- пересмотреть toy-template, а точнее верстку для него
+- validate phone + success page
 - роутер/хистори
 - ...

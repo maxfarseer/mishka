@@ -61,8 +61,8 @@ footer {
     left: 0;
     width: 100%;
     height: 100%;
-    -webkit-transition: all .3s linear 0s;
-    transition: all .3s linear 0s;
+    -webkit-transition: all 0.3s linear;
+    transition: all 0.3s linear;
 }
 .toy-more__text {
     position: absolute;
@@ -86,7 +86,6 @@ footer {
 }
 
 /* modal */
-
 .modal-body__left {
     float: left;
     margin: 10px 10px 10px 0;
@@ -100,4 +99,7 @@ footer {
     float: left;
     width: 385px;
     margin: 10px 0;
+}
+.phone {
+    margin: 20px 0;
 }
