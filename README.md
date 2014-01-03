@@ -5,9 +5,10 @@ mishka
 
 Технологии: Bootstrap, Backbone.js, Underscore templates, jQuery ;)
 
-Plugins
+Plugins & Hints
 ======
 - Masked input - http://digitalbush.com/projects/masked-input-plugin/
+- LESS работает с file:/// - http://www.chrome-allow-file-access-from-file.com/ (x)
 
 TODO
 ======

@@ -4,7 +4,7 @@
     <title>Мишкин house</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="publick/vendor/bower_components/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="publick/css/app.css">
+    <link rel="stylesheet" href="publick/css/app.less">
 
 </head>
 <body>
@@ -150,6 +150,7 @@
 
 
 <script src="publick/vendor/bower_components/jquery/jquery.min.js"></script>
+<script src="publick/vendor/js/less-1.3.3.min.js"></script>
 <script src="publick/vendor/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="publick/vendor/bower_components/underscore/underscore-min.js"></script>
 <script src="publick/vendor/bower_components/backbone/backbone-min.js"></script>
@@ -242,7 +243,7 @@
 
     var ModalView = Backbone.View.extend({
         'events': {
-            'click .js-send-order': 'submit'
+            'click .js-send-order': 'submitOrder'
         },
         'el':'.js-popup',
         initialize: function() {
@@ -259,17 +260,17 @@
             this.$el.html( toyTemplate(toy) );
             this.$phone = this.$el.find(".js-phone");
             this.$phone.mask("+7 (999) 999-99-99");
-            console.log(order.phone);
         },
-        submit: function() {
-            order.phone = this.$phone.val();
-            if (order.phone.length) {
+        submitOrder: function() {
+            /*order.phone = this.$phone.val();
+            debugger;
+            if ( order.phone ) {
                 this.$el.find('.info__item_error').fadeOut(200);
                 this.$el.html( submitTemplate(order) );
-                order.phone = '';
             } else {
                 this.$el.find('.info__item_error').fadeIn(200);
-            }
+            }*/
+            console.log('qq');
         }
     });
 
