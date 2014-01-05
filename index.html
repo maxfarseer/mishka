@@ -174,11 +174,19 @@
     _.extend(vent, Backbone.Events);
 
     vent.on('modal:open', function(model) {
-        var modalView = new ModalView({
+        this.modalView = new ModalView({
             model: model
         });
-        modalView.render();
+        this.modalView.render();
         $('#order-modal').modal('toggle');
+    });
+
+    vent.on('modal:close', function() {
+        this.modalView.remove();
+    })
+
+    $('#order-modal').on('hide.bs.modal', function() {
+        vent.trigger('modal:close');
     });
 
     // загружаем картинки при заходе в первый таб
@@ -261,15 +269,21 @@
             this.$phone = this.$el.find(".js-phone");
             this.$phone.mask("+7 (999) 999-99-99");
         },
+        remove: function() {
+            this.undelegateEvents();
+            this.$el.empty();
+            this.stopListening();
+            console.log('modalView removed');
+            return this;
+        },
         submitOrder: function() {
-            /*order.phone = this.$phone.val();
-            debugger;
+            order.phone = this.$phone.val();
             if ( order.phone ) {
                 this.$el.find('.info__item_error').fadeOut(200);
                 this.$el.html( submitTemplate(order) );
             } else {
                 this.$el.find('.info__item_error').fadeIn(200);
-            }*/
+            }
             console.log('qq');
         }
     });
