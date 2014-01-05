@@ -1,17 +1,10 @@
-mishka
+Mishkin house
 ======
 
-Подари мишку.
+Демо-приложение из нескольких товаров, модального окошка с подробным описанием товара и ответом об успешном заказе.
 
-Технологии: Bootstrap, Backbone.js, Underscore templates, jQuery ;)
+Технологии: Bootstrap, Backbone.js, Underscore templates, jQuery
 
-Plugins & Hints
+Plugins
 ======
 - Masked input - http://digitalbush.com/projects/masked-input-plugin/
-- LESS работает с file:/// - http://www.chrome-allow-file-access-from-file.com/ (x)
-
-TODO
-======
-- validate phone + success page (bug order phone)
-- роутер/хистори
-- ...
