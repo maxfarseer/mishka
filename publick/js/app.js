@@ -21,7 +21,7 @@ vent.on('modal:open', function(model) {
 });
 
 vent.on('modal:close', function() {
-    this.modalView.remove();
+    this.modalView.removeView(); // remove only HTML, not el
 })
 
 $('#order-modal').on('hide.bs.modal', function() {
@@ -104,7 +104,7 @@ var ModalView = Backbone.View.extend({
         this.$phone = this.$el.find(".js-phone");
         this.$phone.mask("+7 (999) 999-99-99");
     },
-    remove: function() {
+    removeView: function() {
         this.undelegateEvents();
         this.$el.empty();
         this.stopListening();
