@@ -101,7 +101,7 @@ var ModalView = Backbone.View.extend({
     },
     render: function() {
         this.$el.html( toyTemplate(toy) );
-        this.$phone = this.$el.find(".js-phone");
+        this.$phone = this.$(".js-phone");
         this.$phone.mask("+7 (999) 999-99-99");
     },
     removeView: function() {
@@ -113,10 +113,10 @@ var ModalView = Backbone.View.extend({
     submitOrder: function() {
         order.phone = this.$phone.val();
         if ( order.phone ) {
-            this.$el.find('.info__item_error').fadeOut(200);
+            this.$('.info__item_error').fadeOut(200);
             this.$el.html( submitTemplate(order) );
         } else {
-            this.$el.find('.info__item_error').fadeIn(200);
+            this.$('.info__item_error').fadeIn(200);
         }
     }
 });
